@@ -33,25 +33,24 @@ public class CadastroUsuarioServlet extends HttpServlet {
 		if(senha1.equals(senha2)) {
 			Usuario usu = new Usuario();
 			
+			
 			usu.setNome(req.getParameter("nameCrud"));
 			usu.setEmail(req.getParameter("email"));
 			usu.setSenha(req.getParameter("senha1"));
-			usu.setDataNascimento = (req.getParameter("dataCadastro"));
 			
 			lstDeUsuario.add(usu);
 			//redirecionar o usuario para a pagina de login
 			resp.sendRedirect("index.html");
 		} else {
 			//redirecionar o usuario para a mesma p�gina de cadastro do usuario
-			req.getRequestDispatcher("TelaCadastro.jsp").forward(req, resp);
+			req.getRequestDispatcher("usuarioCadastro.jsp").forward(req, resp);
 		}
 	}
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		for (Usuario usuario : lstDeUsuario) {
-			System.out.println(usuario.getNome().concat(" - ").concat(usuario.getEmail()));
-		}
+		req.setAttribute("usuarios", lstDeUsuario);
+		req.getRequestDispatcher("usuarioListagem.jsp").forward(req, resp);
 	}
 	
 	

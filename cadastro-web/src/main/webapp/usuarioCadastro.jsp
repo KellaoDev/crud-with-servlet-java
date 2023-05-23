@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -31,9 +32,9 @@
     <main class="main">
         <form method="post" action="cadastrarUsuario">
             <label for="nameCrud">Nome:</label>
-            <input type="text" name="nameCrud" id="nameCrud" value="<%=nome%>">
+            <input type="text" name="nameCrud" id="nameCrud" value="${nome}">
             <label for="email">Email:</label>
-            <input type="email" name="email" id="email" value="<%=email%>">
+            <input type="email" name="email" id="email" value="${email}">
             <label for="senha">Senha:</label>
             <input type="password" name="senha1" id="senha1">
             <label for="senha">Repita a senha:</label>
@@ -46,6 +47,12 @@
                 <a class="btn btn-primary" href="cadastrarUsuario" role="button" id="button">Listar Usuários</a>
             </div>
         </form>
+        <c:if test="${not empty param.nameCrud}">
+        	<hr>
+        	<div class="alert alert-danger" roles="alert">
+        		<span>${param.nameCrud}, as senhas informadas não são iguais</span>
+        	</div>
+        </c:if>
     </main>
 </body>
 </html>
