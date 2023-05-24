@@ -16,9 +16,9 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String name = (req.getParameter("nome"));
-		String password = (req.getParameter("senha"));
-		String email = (req.getParameter("email"));
+		String nameLogin = (req.getParameter("nameLogin"));
+		String emailLogin = (req.getParameter("emailLogin"));
+		String senhaLogin = (req.getParameter("senhaLogin"));
 		
 		
 		String html = new String();

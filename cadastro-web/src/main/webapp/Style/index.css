@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap');
 
 * {
@@ -8,14 +9,13 @@
 }
 
 body {
-    background-color: #103831;
+    background-color: beige; 
 }
 
 .header {
     text-align: center;
     font-size: 3em;
     padding: 1em;
-    color: #FFF;
 }
 
 .main form{
@@ -27,15 +27,15 @@ body {
 }
 
 form input {
+	padding: 0.4em;
     border: none;
     border-radius: 0.4em;
-    padding: 0.4em;
-    background-color: #164b42;
+    background-color: bisque;
+    border: 1px solid black;
 }
 
 form label {
     font-size: 1.4em;
-    color: #FFF;
 }
 
 form #button {
@@ -45,12 +45,13 @@ form #button {
     border: 1px solid rgb(53, 51, 51);
     border-radius: 0.4em;
     padding: 0.1em;
-    background-color: #1f7465;
+    background-color: burlywood;
 }
 
 #button:hover {
-    background-color: rgb(131, 192, 131);
-    color: #FFF;
-    border: none;
+    background-color:rgb(172, 132, 80)
 }
+
+
+
 

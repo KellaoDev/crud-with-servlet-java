@@ -25,22 +25,21 @@ public class CadastroUsuarioServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String senha1 = req.getParameter("senha1");
-		String senha2 = req.getParameter("senha2");
+		String senhaCadastro01 = req.getParameter("senhaCadastro01");
+		String senhaCadastro02 = req.getParameter("senhaCadastro02");
 	
-		//Verificar se as senhas sao iguais
+		//Verificar se as senhas são iguais
 		
-		if(senha1.equals(senha2)) {
+		if(senhaCadastro01.equals(senhaCadastro02)) {
 			Usuario usu = new Usuario();
 			
-			
-			usu.setNome(req.getParameter("nameCrud"));
-			usu.setEmail(req.getParameter("email"));
-			usu.setSenha(req.getParameter("senha1"));
+			usu.setNome(req.getParameter("nameCadastro"));
+			usu.setEmail(req.getParameter("emailCadastro"));
+			usu.setSenha(req.getParameter("senhaCadastro01"));
 			
 			lstDeUsuario.add(usu);
 			//redirecionar o usuario para a pagina de login
-			resp.sendRedirect("index.html");
+			resp.sendRedirect("index.jsp");
 		} else {
 			//redirecionar o usuario para a mesma p�gina de cadastro do usuario
 			req.getRequestDispatcher("usuarioCadastro.jsp").forward(req, resp);
@@ -52,7 +51,6 @@ public class CadastroUsuarioServlet extends HttpServlet {
 		req.setAttribute("usuarios", lstDeUsuario);
 		req.getRequestDispatcher("usuarioListagem.jsp").forward(req, resp);
 	}
-	
 	
 	@Override
 	public void destroy() {
