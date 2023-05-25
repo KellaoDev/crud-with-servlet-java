@@ -31,7 +31,7 @@
 			<tr bgcolor="#${id.count % 2 == 0 ? '6ead4e' : 'aaee88'}">
 				<td>${usuario.id}</td>
 				<td>${usuario.nome}</td>
-				<td> <a href="mailto:"${usuario.email}></a></td>
+				<td> <a href="mailto:${usuario.email}">${usuario.email}</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

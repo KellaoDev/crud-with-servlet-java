@@ -15,16 +15,12 @@
     <title>Cadastro de Usuário</title>
 </head>
 <body>
-	<%
-	String nome = request.getParameter("nome");
-	if(nome == null)
-		nome = "";
-	
-	String email = request.getParameter("email");
-	if(email == null)
-		email = "";
-	%>
-
+	<c:if test="${not empty param.nameCadastro}">
+		${param.nameCadastro = ""}
+	</c:if>
+	<c:if test="${not empty param.emailCadastro}">
+		${param.emailCadastro = ""}
+	</c:if>
 
     <header class="header">
         <h2>Tela Cadastro</h2>
@@ -32,9 +28,9 @@
     <main class="main">
         <form method="post" action="cadastrarUsuario">
             <label for="nameCadastro">Nome:</label>
-            <input type="text" name="nameCadastro" id="nameCadastro" value="${nome}">
+            <input type="text" name="nameCadastro" id="nameCadastro" value="${nameCadastro}">
             <label for="emailCadastro">Email:</label>
-            <input type="email" name="emailCadastro" id="emailCadastro" value="${email}">
+            <input type="email" name="emailCadastro" id="emailCadastro" value="${emailCadastro}">
             <label for="senhaCadastro01">Digite a nova senha:</label>
             <input type="password" name="senhaCadastro01" id="senhaCadastro01">
             <label for="senhaCadastro02">Repita a senha:</label>
@@ -45,7 +41,7 @@
                 <a class="btn btn-primary" href="cadastrarUsuario" role="button" id="button">Listar Usuários</a>
             </div>
         </form>
-        <c:if test="${not empty param.nameCrud}">
+        <c:if test="${not empty param.nameCadastro}">
         	<hr>
         	<div class="alert alert-danger" roles="alert">
         		<span>${param.nameCrud}, as senhas informadas não são iguais</span>

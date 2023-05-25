@@ -16,13 +16,16 @@ public class LoginServlet extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		String nameLogin = (req.getParameter("nameLogin"));
 		String emailLogin = (req.getParameter("emailLogin"));
 		String senhaLogin = (req.getParameter("senhaLogin"));
 		
-		
 		String html = new String();
-		html = "<html><body><h1>Login Realizado com Sucesso!</h1></body></html>";
+		
+		if(emailLogin.isEmpty() || senhaLogin.isEmpty()) {
+			html = "<html><body><h1>Falha: email ou senha inválidos</h1></body></html>";
+		} else {
+			html = "<html><body><h1>Login Realizado com Sucesso!</h1></body></html>";
+		}
 		
 		PrintWriter writer = resp.getWriter();
 		writer.println(html);
