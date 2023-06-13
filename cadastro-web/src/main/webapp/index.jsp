@@ -21,7 +21,7 @@
     <main class="main">
         <form action="login">
             <label for="nameLogin">Nome:</label>
-            <input type="text" name="nomeLogin" id="nomeLogin">
+            <input type="search" name="nomeLogin" id="nomeLogin">
             <label for="emailLogin">Email:</label>
             <input type="email" name="emailLogin" id="emailLogin">
             <label for="senhaLogin">Senha:</label>

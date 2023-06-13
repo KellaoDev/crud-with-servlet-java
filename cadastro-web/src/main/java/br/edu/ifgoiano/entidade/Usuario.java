@@ -1,7 +1,5 @@
 package br.edu.ifgoiano.entidade;
 
-import java.util.Date;
-
 public class Usuario {
 	
 	private static Integer incremento = 0;
