@@ -3,7 +3,6 @@ package br.edu.ifgoiano.controle;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,10 +10,16 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import br.edu.ifgoiano.entidade.Usuario;
+import br.edu.ifgoiano.repositorio.UsuarioRepositorio;
 
 @WebServlet("/cadastrarUsuario")
 public class CadastroUsuarioServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	//Simular o banco de Dados
 	private List<Usuario> lstDeUsuario;
 	
@@ -37,6 +42,8 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			usu.setEmail(req.getParameter("emailCadastro"));
 			usu.setSenha(req.getParameter("senhaCadastro01"));
 			
+			UsuarioRepositorio repositorio = new UsuarioRepositorio();
+			
 			lstDeUsuario.add(usu);
 			//redirecionar o usuario para a pagina de login
 			resp.sendRedirect("index.jsp");
@@ -48,7 +55,8 @@ public class CadastroUsuarioServlet extends HttpServlet {
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		req.setAttribute("usuarios", lstDeUsuario);
+		UsuarioRepositorio repositorio = new UsuarioRepositorio();
+		req.setAttribute("usuarios", repositorio.listarUsuarios());
 		req.getRequestDispatcher("usuarioListagem.jsp").forward(req, resp);
 	}
 	
