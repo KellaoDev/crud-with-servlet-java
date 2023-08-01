@@ -12,26 +12,20 @@ import br.edu.ifgoiano.entidade.Usuario;
 
 public class UsuarioRepositorio {
 
-	public static Connection conn;
-	public UsuarioRepositorio() {
-		try {
-			conn = DriverManager.
-					getConnection("jdbc:h2:~/usuariodb", "sa", "sa");
-			//Verificar a verificação realizada com sucesso na console
-			System.out.println("Conexão realizada com sucesso.");
-		} catch (SQLException e) {
-			System.out.println("Erro na conexão com o banco de dados.");
-			e.printStackTrace();
-		}
+	private Connection getConnection() throws SQLException {
+		return DriverManager.
+				getConnection("jdbc:h2:~/usuariodb", "sa", "sa");
 	}
+	
 
 	public List<Usuario> listarUsuarios() {
 		List<Usuario> lstUsuarios = new ArrayList<Usuario>();
 		
 		String sql = "select id, nome, email, senha, data_nascimento from usuario";
 		
-		try {
-			PreparedStatement pst = conn.prepareStatement(sql);
+		try (Connection conn = this.getConnection();
+				PreparedStatement pst = conn.prepareStatement(sql)
+				){
 			
 			ResultSet resultSet = pst.executeQuery();
 			
@@ -49,5 +43,33 @@ public class UsuarioRepositorio {
 			e.printStackTrace();
 		}
 		return lstUsuarios;
+	}
+
+
+	public void inserirUsuario(Usuario usuario) {
+		// TODO Auto-generated method stub
+		
+		//Criar a SQL
+		StringBuilder sql = new StringBuilder();
+		sql.append("insert into usuario ");
+		sql.append("(nome, email, senha) ");
+		sql.append("values (?, ?, ?)");
+		
+		//Abrir uma conexão
+		try (Connection conn = getConnection();
+				PreparedStatement pst = conn.prepareStatement(sql.toString());	
+				){
+			
+			//Executar o SQL
+			pst.execute();
+			
+			conn.commit();
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Erro na consulta de usuários");
+			e.printStackTrace();
+		}
+		
 	}
 }
