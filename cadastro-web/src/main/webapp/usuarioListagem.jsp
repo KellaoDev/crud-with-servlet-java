@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
@@ -32,6 +32,7 @@
 				<td>${usuario.id}</td>
 				<td>${usuario.nome}</td>
 				<td> <a href="mailto:${usuario.email}">${usuario.email}</a></td>
+				<td> <a class="btn btn-success" href="atualizarUsuario.jsp" role="button">editar</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

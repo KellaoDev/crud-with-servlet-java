@@ -21,7 +21,7 @@ public class UsuarioRepositorio {
 	public List<Usuario> listarUsuarios() {
 		List<Usuario> lstUsuarios = new ArrayList<Usuario>();
 		
-		String sql = "select id, nome, email, senha, data_nascimento from usuario";
+		String sql = "select id, nome, email, senha from usuario";
 		
 		try (Connection conn = this.getConnection();
 				PreparedStatement pst = conn.prepareStatement(sql)
@@ -57,8 +57,10 @@ public class UsuarioRepositorio {
 		
 		//Abrir uma conexão
 		try (Connection conn = getConnection();
-				PreparedStatement pst = conn.prepareStatement(sql.toString());	
-				){
+				PreparedStatement pst = conn.prepareStatement(sql.toString())) {
+				pst.setString(1, usuario.getNome());
+				pst.setString(2, usuario.getEmail());
+				pst.setString(3, usuario.getSenha());
 			
 			//Executar o SQL
 			pst.execute();
