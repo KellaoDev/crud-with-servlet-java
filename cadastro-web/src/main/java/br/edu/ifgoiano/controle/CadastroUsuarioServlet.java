@@ -1,9 +1,6 @@
 package br.edu.ifgoiano.controle;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -37,7 +34,6 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			
 			UsuarioRepositorio repositorio = new UsuarioRepositorio();
 			repositorio.inserirUsuario(usuario);
-			
 			
 			//redirecionar o usuario para a pagina de login
 			resp.sendRedirect("index.jsp");

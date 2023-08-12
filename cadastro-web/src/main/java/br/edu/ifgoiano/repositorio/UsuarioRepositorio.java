@@ -1,5 +1,6 @@
 package br.edu.ifgoiano.repositorio;
 
+import java.beans.Statement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -7,6 +8,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
 import br.edu.ifgoiano.entidade.Usuario;
 
@@ -72,6 +75,58 @@ public class UsuarioRepositorio {
 			System.out.println("Erro na consulta de usuários");
 			e.printStackTrace();
 		}
+	}
+	
+	public Usuario consultarUsuarios(int id) {
 		
+		Usuario usuario = null;
+		
+		String sql = "select id, nome, email, senha from usuario WHERE id = ?";
+		
+		try (Connection conn = this.getConnection();
+				PreparedStatement pst = conn.prepareStatement(sql);
+				){
+			pst.setInt(1, id);
+			ResultSet resultSet = pst.executeQuery();
+			
+			while(resultSet.next()) {
+				
+				usuario = new Usuario();
+				
+				usuario.setId(resultSet.getInt("id"));
+				usuario.setNome(resultSet.getString("nome"));
+				usuario.setEmail(resultSet.getString("email"));
+				usuario.setSenha(resultSet.getString("senha"));
+				//..demais campos	
+			}
+		} catch (Exception e) {
+			System.out.println("Erro na consulta de usuários");
+			e.printStackTrace();
+		}
+		return usuario;
+	}
+
+	
+	public void editarUsuario(Usuario usuario) {
+		
+		String sql = "update usuario set nome = ?, email = ?, senha = ?" + " WHERE id = ?";
+		
+		try (Connection conn = getConnection();
+			PreparedStatement pst = conn.prepareStatement(sql)) {
+			
+			pst.setInt(4, usuario.getId());
+			pst.setString(1, usuario.getNome());
+			pst.setString(2, usuario.getEmail());
+			pst.setString(3, usuario.getSenha());
+			
+			//Executar o SQL
+			pst.execute();
+			
+			conn.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Erro na alteração de usuários");
+			e.printStackTrace();
+		}
 	}
 }

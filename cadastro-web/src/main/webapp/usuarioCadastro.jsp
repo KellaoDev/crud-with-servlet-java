@@ -28,9 +28,9 @@
     <main class="main">
         <form method="post" action="cadastrarUsuario">
             <label for="nameCadastro">Nome:</label>
-            <input type="text" name="nameCadastro" id="nameCadastro" value="${nameCadastro}">
+            <input type="text" name="nameCadastro" id="nameCadastro">
             <label for="emailCadastro">Email:</label>
-            <input type="email" name="emailCadastro" id="emailCadastro" value="${emailCadastro}">
+            <input type="email" name="emailCadastro" id="emailCadastro">
             <label for="senhaCadastro01">Digite a nova senha:</label>
             <input type="password" name="senhaCadastro01" id="senhaCadastro01">
             <label for="senhaCadastro02">Repita a senha:</label>
