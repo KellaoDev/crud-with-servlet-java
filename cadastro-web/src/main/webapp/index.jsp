@@ -21,11 +21,11 @@
     <main class="main">
         <form action="login">
             <label for="nameLogin">Nome:</label>
-            <input type="search" name="nomeLogin" id="nomeLogin">
+            <input type="search" name="nomeLogin" id="nomeLogin" required="required">
             <label for="emailLogin">Email:</label>
             <input type="email" name="emailLogin" id="emailLogin">
             <label for="senhaLogin">Senha:</label>
-            <input type="password" name="senhaLogin" id="senhaLogin">
+            <input type="password" name="senhaLogin" id="senhaLogin" required="required">
             <input type="submit" value="Entrar" id="button">
             <a href="usuarioCadastro.jsp">Clique aqui para se cadastrar!</a>
         </form>

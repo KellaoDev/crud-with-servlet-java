@@ -32,7 +32,7 @@
 				<td>${usuario.id}</td>
 				<td>${usuario.nome}</td>
 				<td> <a href="mailto:${usuario.email}">${usuario.email}</a></td>
-				<td> <a class="btn btn-success" href="usuarioAtualizar?id=${usuario.id}" role="button">editar</a></td>
+				<td> <a class="btn btn-success" href="atualizarUsuario?id=${usuario.id}" role="button">editar</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>

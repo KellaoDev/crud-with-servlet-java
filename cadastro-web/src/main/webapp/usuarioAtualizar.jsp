@@ -18,15 +18,15 @@
         <h2>Atualizar Cadastro</h2>
     </header>
  <main class="main">
-        <form method="post" action="usuarioAtualizar">
+        <form method="post" action="atualizarUsuario">
             <label for="nameAtualizar">Nome:</label>
             <input type="text" name="nameAtualizar" id="nameAtualizar" value="${usuario.nome}">
             <label for="emailAtualizar">Email:</label>
             <input type="email" name="emailAtualizar" id="emailAtualizar" value="${usuario.email}">
             <label for="senhaAtualizar">Digite a nova senha:</label>
-            <input type="password" name="senhaAtualizar01" id="senhaAtualizar01">
+            <input type="password" name="senhaAtualizar01" id="senhaAtualizar01" required="required">
             <label for="senhaAtualizar">Repita a senha:</label>
-            <input type="password" name="senhaAtualizar02" id="senhaAtualizar02">
+            <input type="password" name="senhaAtualizar02" id="senhaAtualizar02" required="required">
             <button class="btn btn-primary" type="submit" id="button">Salvar</button>
         </form>
 </main>

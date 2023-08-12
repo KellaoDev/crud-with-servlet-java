@@ -15,26 +15,19 @@
     <title>Cadastro de Usuário</title>
 </head>
 <body>
-	<c:if test="${not empty param.nameCadastro}">
-		${param.nameCadastro = ""}
-	</c:if>
-	<c:if test="${not empty param.emailCadastro}">
-		${param.emailCadastro = ""}
-	</c:if>
-
     <header class="header">
         <h2>Tela Cadastro</h2>
     </header>
     <main class="main">
         <form method="post" action="cadastrarUsuario">
             <label for="nameCadastro">Nome:</label>
-            <input type="text" name="nameCadastro" id="nameCadastro">
+            <input type="text" name="nameCadastro" id="nameCadastro" value="${param.nameCadastro}" required="required"> 
             <label for="emailCadastro">Email:</label>
-            <input type="email" name="emailCadastro" id="emailCadastro">
+            <input type="email" name="emailCadastro" id="emailCadastro" value="${param.emailCadastro}">
             <label for="senhaCadastro01">Digite a nova senha:</label>
-            <input type="password" name="senhaCadastro01" id="senhaCadastro01">
+            <input type="password" name="senhaCadastro01" id="senhaCadastro01" required="required">
             <label for="senhaCadastro02">Repita a senha:</label>
-            <input type="password" name="senhaCadastro02" id="senhaCadastro02">
+            <input type="password" name="senhaCadastro02" id="senhaCadastro02" required="required">
             <div class="flex">
                 <a class="btn btn-primary" href="index.jsp" role="button" id="button">Voltar</a>
                 <input class="btn btn-primary" type="submit" value="Salvar" id="button">
@@ -44,7 +37,7 @@
         <c:if test="${not empty param.nameCadastro}">
         	<hr>
         	<div class="alert alert-danger" roles="alert">
-        		<span>${param.nameCrud}, as senhas informadas não são iguais</span>
+        		${param.nameCadastro}<span>, as senhas informadas não são iguais</span>
         	</div>
         </c:if>
     </main>

@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import br.edu.ifgoiano.entidade.Usuario;
 import br.edu.ifgoiano.repositorio.UsuarioRepositorio;
 
-@WebServlet("/usuarioAtualizar")
+@WebServlet("/atualizarUsuario")
 public class AtualizarUsuarioServlet extends HttpServlet {
 
 	/**
@@ -37,6 +37,7 @@ public class AtualizarUsuarioServlet extends HttpServlet {
 		
 		UsuarioRepositorio repositorio = new UsuarioRepositorio();
 		repositorio.editarUsuario(usuario);
+		
 		} else {
 			//redirecionar o usuario para a mesma p�gina de atualizar usuario
 			req.getRequestDispatcher("index.jsp").forward(req, resp);
