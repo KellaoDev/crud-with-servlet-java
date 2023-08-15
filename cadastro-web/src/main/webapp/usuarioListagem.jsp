@@ -33,10 +33,11 @@
 				<td>${usuario.nome}</td>
 				<td> <a href="mailto:${usuario.email}">${usuario.email}</a></td>
 				<td> <a class="btn btn-success" href="atualizarUsuario?id=${usuario.id}" role="button">editar</a></td>
+				<td> <a class="btn btn-success" href="excluirUsuario?id=${usuario.id}" role="button">excluir</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
 	</table> 
-	<a class="btn btn-primary" href="index.jsp" role="button" id="button">Voltar</a>
+	<a class="btn btn-primary" href="usuarioCadastro.jsp" role="button" id="button">Voltar</a>
 </body>
 </html>

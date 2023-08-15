@@ -22,12 +22,10 @@ public class AtualizarUsuarioServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		String senhaAtualizar01 = req.getParameter("senhaAtualizar01");
+		int userId = Integer.parseInt(req.getParameter("id")); 
+
 		String senhaAtualizar02 = req.getParameter("senhaAtualizar02");
 		
-		int userId = Integer.parseInt(req.getParameter("id")); 
-		
-		if(senhaAtualizar01.equals(senhaAtualizar02)) {
 		Usuario usuario = new Usuario();
 		
 		usuario.setId(userId);
@@ -35,12 +33,18 @@ public class AtualizarUsuarioServlet extends HttpServlet {
 		usuario.setEmail(req.getParameter("emailAtualizar"));
 		usuario.setSenha(req.getParameter("senhaAtualizar01"));
 		
+		if(usuario.getSenha().equals(senhaAtualizar02)) {
 		UsuarioRepositorio repositorio = new UsuarioRepositorio();
 		repositorio.editarUsuario(usuario);
 		
+		resp.sendRedirect("cadastrarUsuario");
 		} else {
+			String mensagem = usuario.getNome().concat(", as senhas informadas não são iguais!");
+			
+			req.setAttribute("mensagem", mensagem);
+			req.setAttribute("usuario", usuario);
 			//redirecionar o usuario para a mesma p�gina de atualizar usuario
-			req.getRequestDispatcher("index.jsp").forward(req, resp);
+			req.getRequestDispatcher("usuarioAtualizar.jsp").forward(req, resp);
 		}
 	}
 	
@@ -50,6 +54,7 @@ public class AtualizarUsuarioServlet extends HttpServlet {
 		int userId = Integer.parseInt(req.getParameter("id")); 
 		
 		UsuarioRepositorio repositorio = new UsuarioRepositorio();
+		
 		req.setAttribute("usuario", repositorio.consultarUsuarios(userId));
 		
 		req.getRequestDispatcher("usuarioAtualizar.jsp").forward(req, resp);

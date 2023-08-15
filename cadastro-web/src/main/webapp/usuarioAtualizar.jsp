@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,6 +20,7 @@
     </header>
  <main class="main">
         <form method="post" action="atualizarUsuario">
+        	<input type="hidden" name="id" value="${usuario.id}">
             <label for="nameAtualizar">Nome:</label>
             <input type="text" name="nameAtualizar" id="nameAtualizar" value="${usuario.nome}">
             <label for="emailAtualizar">Email:</label>
@@ -29,6 +31,12 @@
             <input type="password" name="senhaAtualizar02" id="senhaAtualizar02" required="required">
             <button class="btn btn-primary" type="submit" id="button">Salvar</button>
         </form>
+        <c:if test="${not empty mensagem}">
+        	<hr>
+        	<div class="alert alert-danger" role="alert">
+        		<span>${mensagem}</span>
+        	</div>
+        </c:if>
 </main>
 </body>
 </html>

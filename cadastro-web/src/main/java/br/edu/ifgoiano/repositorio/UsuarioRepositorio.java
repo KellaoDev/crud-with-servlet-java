@@ -129,4 +129,20 @@ public class UsuarioRepositorio {
 			e.printStackTrace();
 		}
 	}
+	
+	public void excluirUsuario(Usuario usuario) {
+		String sql = "delete from usuario where id = ?";
+		
+		try (Connection conn = this.getConnection();
+			PreparedStatement pst = conn.prepareStatement(sql))	{
+			pst.setInt(1, usuario.getId());
+			pst.execute();
+			
+			conn.commit();
+		} catch (Exception e) {
+			// TODO: handle exception
+			System.out.println("Erro na exclusão de usuario");
+			e.printStackTrace();
+		}
+	}
 }
