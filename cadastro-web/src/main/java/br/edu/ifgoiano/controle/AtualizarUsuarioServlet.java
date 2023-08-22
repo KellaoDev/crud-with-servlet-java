@@ -22,7 +22,7 @@ public class AtualizarUsuarioServlet extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		int userId = Integer.parseInt(req.getParameter("id")); 
+		int userId = Integer.valueOf(req.getParameter("id")); 
 
 		String senhaAtualizar02 = req.getParameter("senhaAtualizar02");
 		

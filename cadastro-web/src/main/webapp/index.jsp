@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,9 +20,9 @@
         <h2 class="header">Tela Login</h2>
     </header>
     <main class="main">
-        <form action="login">
+        <form action="login" method="get">
             <label for="nameLogin">Nome:</label>
-            <input type="search" name="nomeLogin" id="nomeLogin" required="required">
+            <input type="text" name="nomeLogin" id="nomeLogin" required="required">
             <label for="emailLogin">Email:</label>
             <input type="email" name="emailLogin" id="emailLogin">
             <label for="senhaLogin">Senha:</label>

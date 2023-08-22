@@ -24,6 +24,8 @@
 				<th>Id</th>
 				<th>Nome</th>
 				<th>Email</th>
+				<th>Editar</th>
+				<th>Excluir</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -33,7 +35,7 @@
 				<td>${usuario.nome}</td>
 				<td> <a href="mailto:${usuario.email}">${usuario.email}</a></td>
 				<td> <a class="btn btn-success" href="atualizarUsuario?id=${usuario.id}" role="button">editar</a></td>
-				<td> <a class="btn btn-success" href="excluirUsuario?id=${usuario.id}" role="button">excluir</a></td>
+				<td> <a class="btn btn-danger" href="excluirUsuario?id=${usuario.id}" role="button">excluir</a></td>
 			</tr>
 			</c:forEach>
 		</tbody>
