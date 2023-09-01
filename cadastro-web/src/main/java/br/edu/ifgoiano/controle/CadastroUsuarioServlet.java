@@ -25,7 +25,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 	
 		//Verificar se as senhas são iguais e criando usuário
 		
-		if(senhaCadastro01.equals(senhaCadastro02) && senhaCadastro01 != "" && senhaCadastro02 != "") {
+		if(senhaCadastro01.equals(senhaCadastro02)) {
 			Usuario usuario = new Usuario();
 			
 			usuario.setNome(req.getParameter("nameCadastro"));
@@ -36,7 +36,7 @@ public class CadastroUsuarioServlet extends HttpServlet {
 			repositorio.inserirUsuario(usuario);
 			
 			//redirecionar o usuario para a pagina de login
-			resp.sendRedirect("index.jsp");
+			resp.sendRedirect("cadastrarUsuario");
 		} else {
 			//redirecionar o usuario para a mesma página de cadastro do usuario
 			req.getRequestDispatcher("usuarioCadastro.jsp").forward(req, resp);
